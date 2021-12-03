@@ -15,6 +15,7 @@ import axios from "axios";
 //
 const Tabs = (topics) => {
   const ArticleTopics = document.createElement("div");
+  ArticleTopics.classList.add("topics");
 
   topics.forEach((element) => {
     const div = document.createElement("div");
@@ -35,10 +36,10 @@ const Tabs = (topics) => {
 
 const tabsAppender = (selector) => {
   axios
-    .get("http://localhost:5000/api/topics")
+    .get("http://localhost:5001/api/topics")
     .then((res) => {
       console.log(res);
-      //document.querySelector(selector).appendChild(Tabs(res.data.topics));
+      document.querySelector(selector).appendChild(Tabs(res.data.topics));
     })
     .catch((error) => {
       console.error(error);
