@@ -59,22 +59,33 @@ const cardAppender = (selector) => {
   axios
     .get("http://localhost:5001/api/articles")
     .then((res) => {
-      console.log(res.data.articles.bootstrap);
-      res.data.articles.bootstrap.forEach((el) => {
+      console.log(res);
+      const data = res.data.articles;
+      const articles = [
+        ...data.bootstrap,
+        ...data.javascript,
+        ...data.technology,
+        ...data.jquery,
+        ...data.node,
+      ];
+      articles.forEach((el) => {
         document.querySelector(selector).appendChild(Card(el));
       });
-      res.data.articles.javascript.forEach((el) => {
-        document.querySelector(selector).appendChild(Card(el));
-      });
-      res.data.articles.technology.forEach((el) => {
-        document.querySelector(selector).appendChild(Card(el));
-      });
-      res.data.articles.jquery.forEach((el) => {
-        document.querySelector(selector).appendChild(Card(el));
-      });
-      res.data.articles.node.forEach((el) => {
-        document.querySelector(selector).appendChild(Card(el));
-      });
+      //   res.data.articles.bootstrap.forEach((el) => {
+      //     document.querySelector(selector).appendChild(Card(el));
+      //   });
+      //   res.data.articles.javascript.forEach((el) => {
+      //     document.querySelector(selector).appendChild(Card(el));
+      //   });
+      //   res.data.articles.technology.forEach((el) => {
+      //     document.querySelector(selector).appendChild(Card(el));
+      //   });
+      //   res.data.articles.jquery.forEach((el) => {
+      //     document.querySelector(selector).appendChild(Card(el));
+      //   });
+      //   res.data.articles.node.forEach((el) => {
+      //     document.querySelector(selector).appendChild(Card(el));
+      //   });
     })
     .catch((error) => {
       console.error(error);
