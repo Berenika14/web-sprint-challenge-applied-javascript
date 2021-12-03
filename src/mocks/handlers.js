@@ -1,21 +1,15 @@
-import { rest } from 'msw'
-import { topics, articles } from './data'
+import { rest } from "msw";
+import { topics, articles } from "./data";
 
 function getTopics(req, res, ctx) {
-  return res(
-    ctx.status(200),
-    ctx.json(topics),
-  )
+  return res(ctx.status(200), ctx.json(topics));
 }
 
 function getArticles(req, res, ctx) {
-  return res(
-    ctx.status(200),
-    ctx.json(articles),
-  )
+  return res(ctx.status(200), ctx.json(articles));
 }
 
 export const handlers = [
-  rest.get('http://localhost:5000/api/articles', getArticles),
-  rest.get('http://localhost:5000/api/topics', getTopics),
-]
+  rest.get("http://localhost:5000/api/articles", getArticles),
+  rest.get("http://localhost:5000/api/topics", getTopics),
+];
